@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id        String      @id
+  username  String
+  email     String
+  password  String
+  GroupUser GroupUser[]
+  Costs     Costs[]
+}
+
+model Groups {
+  id         String      @id
+  name       String
+  created_at DateTime
+  GroupUser  GroupUser[]
+  Costs      Costs[]
+}
+
+model GroupUser {
+  Group   Groups @relation(fields: [GroupId], references: [id])
+  GroupId String
+  User    Users  @relation(fields: [UserId], references: [id])
+  UserId  String
+
+  @@id([GroupId, UserId])
+}
+
+model Costs {
+  id          String  @id
+  name        String
+  description String
+  amount      Decimal
+  UserId      String
+  User        Users?  @relation(fields: [UserId], references: [id])
+  Groups      Groups? @relation(fields: [GroupsId], references: [id])
+  GroupsId    String?
+}

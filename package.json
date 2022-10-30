@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
+    "dev": "nodemon ./index.js",
+    "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -11,10 +14,24 @@
     "url": "git+https://github.com/RandallAgHodg/GraphQLInventoryAPI.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Randall Agustin Hodgson",
   "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^4.5.0",
+    "apollo-server": "^3.10.3",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.32.0",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "uuid": "^9.0.0"
+  },
   "bugs": {
     "url": "https://github.com/RandallAgHodg/GraphQLInventoryAPI/issues"
   },
-  "homepage": "https://github.com/RandallAgHodg/GraphQLInventoryAPI#readme"
+  "homepage": "https://github.com/RandallAgHodg/GraphQLInventoryAPI#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "prisma": "^4.5.0"
+  }
 }
